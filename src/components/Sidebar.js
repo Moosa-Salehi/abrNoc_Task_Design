@@ -9,12 +9,12 @@ const options = [
   {name: 'Instances', icon: LocalHospitalOutlined, },
   {name: 'Snapshots', icon: ContentCopyOutlined, },
   {name: 'SSH Keys', icon: VpnKeyOutlined, },
-  {name: 'Volume', icon: DnsOutlined, },
-  {name: 'Billing', icon: AttachMoneyOutlined, },
+  {name: 'Volume', icon: DnsOutlined, disabled: true, endOfGroup: true },
+  {name: 'Billing', icon: AttachMoneyOutlined, children: {} },
   {name: 'Networking', icon: WifiOutlined, },
   {name: 'Report', icon: DescriptionOutlined, },
-  {name: 'Support', icon: HeadphonesOutlined, },
-  {name: 'Help', icon: HelpOutlineOutlined, },
+  {name: 'Support', icon: HeadphonesOutlined, bordered: true, spaceUp: true },
+  {name: 'Help', icon: HelpOutlineOutlined, bordered: true },
 ];
 
 const Sidebar = () => {
@@ -34,16 +34,26 @@ const Sidebar = () => {
       >
         <Toolbar />
         <Divider />
-        <List>
+        <List sx={{ paddingX:'10px', }}>
           {options.map((option, index) => (
-            <ListItem key={index} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <option.icon/>
-                </ListItemIcon>
-                <ListItemText primary={option.name} />
-              </ListItemButton>
-            </ListItem>
+            <>
+              <ListItem key={index} disablePadding 
+                disabled={option.hasOwnProperty('disabled')} 
+                sx={{
+                  marginY: '3px',
+                  ...(option.hasOwnProperty('spaceUp') && { marginTop: '15vh' }),
+                  ...(option.hasOwnProperty('bordered') && { border: '1px solid lightgray', borderRadius: '5px' }),
+                }}
+              >
+                <ListItemButton>
+                  <ListItemIcon sx={{ minWidth: '40px', }}>
+                    <option.icon />
+                  </ListItemIcon>
+                  <ListItemText primary={option.name} sx={{ lineHeight: '1.1' }}/>
+                </ListItemButton>
+              </ListItem>
+              {option.hasOwnProperty('endOfGroup') && <Divider />}
+            </>
           ))}
         </List>
       </Drawer>

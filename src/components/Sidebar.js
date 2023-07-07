@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Drawer,
-  Divider,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
+import { Box, Drawer, Divider, List } from "@mui/material";
 import { SideBarOptions, SideBarWidth } from "../Config";
 import CloudzyPicture from "./SidebarComponents/CloudzyPicture";
 import SideBarOption from "./SidebarComponents/SideBarOption";
@@ -51,43 +42,19 @@ const Sidebar = () => {
                 handleOptionClick={handleOptionClick}
                 activeOption={activeOption}
                 subMenuActive={subMenuActive}
+                child={false}
               />
               {option.hasOwnProperty("children") &&
                 subMenuActive &&
-                option.children.map((childOption, chiledIndex) => (
-                  <ListItem
-                    key={chiledIndex}
-                    disablePadding
-                    onClick={() => handleOptionClick(childOption)}
-                    sx={{
-                      marginY: "3px",
-                      marginLeft: "15px",
-                      ...(childOption.name == activeOption && {
-                        backgroundColor: "rgb(44,94,255)",
-                        borderRadius: "5px",
-                      }),
-                    }}
-                  >
-                    <ListItemButton>
-                      <ListItemIcon sx={{ minWidth: "40px" }}>
-                        <childOption.icon
-                          sx={{
-                            ...(childOption.name == activeOption
-                              ? { color: "rgb(250,250,250)" }
-                              : { color: "rgba(0,0,0,0.7)" }),
-                          }}
-                        />
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={childOption.name}
-                        primaryTypographyProps={{
-                          ...(childOption.name == activeOption
-                            ? { color: "rgb(250,250,250)" }
-                            : { color: "rgba(0,0,0,0.7)", fontWeight: "bold" }),
-                        }}
-                      />
-                    </ListItemButton>
-                  </ListItem>
+                option.children.map((childOption, childIndex) => (
+                  <SideBarOption
+                    option={childOption}
+                    index={childIndex}
+                    handleOptionClick={handleOptionClick}
+                    activeOption={activeOption}
+                    subMenuActive={subMenuActive}
+                    child={true}
+                  />
                 ))}
               {option.hasOwnProperty("endOfGroup") && <Divider />}
             </>

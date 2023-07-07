@@ -16,11 +16,14 @@ const SideBarOption = (props) => {
       onClick={() => props.handleOptionClick(props.option)}
       sx={{
         marginY: "3px",
+        ...(props.child && {
+          marginLeft: "15px",
+        }),
         ...(props.option.hasOwnProperty("spaceUp") && {
           marginTop: "15vh",
         }),
         ...(props.option.hasOwnProperty("firstOption") && {
-          marginTop: "3vh",
+          marginTop: "5vh",
         }),
         ...(props.option.hasOwnProperty("bordered") && {
           border: "1px solid lightgray",

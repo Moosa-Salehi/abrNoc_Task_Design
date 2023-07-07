@@ -7,26 +7,26 @@ import {
 } from "@mui/material";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 
-const SideBarOption = (option, index, handleOptionClick, activeOption) => {
+const SideBarOption = (props) => {
   return (
     <ListItem
-      key={index}
+      key={props.index}
       disablePadding
-      disabled={option.hasOwnProperty("disabled")}
-      onClick={() => handleOptionClick(option)}
+      disabled={props.option.hasOwnProperty("disabled")}
+      onClick={() => props.handleOptionClick(props.option)}
       sx={{
         marginY: "3px",
-        ...(option.hasOwnProperty("spaceUp") && {
+        ...(props.option.hasOwnProperty("spaceUp") && {
           marginTop: "15vh",
         }),
-        ...(option.hasOwnProperty("firstOption") && {
+        ...(props.option.hasOwnProperty("firstOption") && {
           marginTop: "3vh",
         }),
-        ...(option.hasOwnProperty("bordered") && {
+        ...(props.option.hasOwnProperty("bordered") && {
           border: "1px solid lightgray",
           borderRadius: "5px",
         }),
-        ...(option.name == activeOption && {
+        ...(props.option.name == props.activeOption && {
           backgroundColor: "rgb(44,94,255)",
           borderRadius: "5px",
         }),
@@ -34,24 +34,24 @@ const SideBarOption = (option, index, handleOptionClick, activeOption) => {
     >
       <ListItemButton>
         <ListItemIcon sx={{ minWidth: "40px" }}>
-          <option.icon
+          <props.option.icon
             sx={{
-              ...(option.name == activeOption
+              ...(props.option.name == props.activeOption
                 ? { color: "rgb(250,250,250)" }
                 : { color: "rgba(0,0,0,0.7)" }),
             }}
           />
         </ListItemIcon>
         <ListItemText
-          primary={option.name}
+          primary={props.option.name}
           primaryTypographyProps={{
-            ...(option.name == activeOption
+            ...(props.option.name == props.activeOption
               ? { color: "rgb(250,250,250)" }
               : { color: "rgba(0,0,0,0.7)", fontWeight: "bold" }),
           }}
         />
-        {option.hasOwnProperty("children") ? (
-          subMenuActive ? (
+        {props.option.hasOwnProperty("children") ? (
+          props.subMenuActive ? (
             <KeyboardArrowUp color="black" />
           ) : (
             <KeyboardArrowDown color="black" />

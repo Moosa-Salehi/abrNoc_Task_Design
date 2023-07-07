@@ -14,7 +14,7 @@ import {
   Looks3Outlined,
 } from "@mui/icons-material";
 
-export const BASE_API_ROUTE = 'https://assignment.abrnoc.com';
+export const BASE_API_ROUTE = "https://assignment.abrnoc.com";
 export const SideBarWidth = "260px";
 export const SideBarOptions = [
   { name: "Dashboard", icon: DashboardOutlined, firstOption: true },

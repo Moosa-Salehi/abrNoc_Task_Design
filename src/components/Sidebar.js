@@ -9,46 +9,9 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import {
-  DashboardOutlined,
-  LocalHospitalOutlined,
-  ContentCopyOutlined,
-  VpnKeyOutlined,
-  DnsOutlined,
-  AttachMoneyOutlined,
-  WifiOutlined,
-  DescriptionOutlined,
-  HeadphonesOutlined,
-  HelpOutlineOutlined,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-  LooksOneOutlined,
-  LooksTwoOutlined,
-  Looks3Outlined,
-} from "@mui/icons-material";
+import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import cloudzypic from "../assets/images/Cloudzy.webp";
-
-const drawerWidth = "260px";
-const options = [
-  { name: "Dashboard", icon: DashboardOutlined, firstOption: true },
-  { name: "Instances", icon: LocalHospitalOutlined },
-  { name: "Snapshots", icon: ContentCopyOutlined },
-  { name: "SSH Keys", icon: VpnKeyOutlined },
-  { name: "Volume", icon: DnsOutlined, disabled: true, endOfGroup: true },
-  {
-    name: "Billing",
-    icon: AttachMoneyOutlined,
-    children: [
-      { name: "item 1", icon: LooksOneOutlined },
-      { name: "item 2", icon: LooksTwoOutlined },
-      { name: "item 3", icon: Looks3Outlined },
-    ],
-  },
-  { name: "Networking", icon: WifiOutlined },
-  { name: "Report", icon: DescriptionOutlined },
-  { name: "Support", icon: HeadphonesOutlined, bordered: true, spaceUp: true },
-  { name: "Help", icon: HelpOutlineOutlined, bordered: true },
-];
+import { SideBarOptions, SideBarWidth } from "../Config";
 
 const Sidebar = () => {
   const [activeOption, setActiveOption] = useState("Instances");
@@ -67,10 +30,10 @@ const Sidebar = () => {
     <Box sx={{ display: "flex" }}>
       <Drawer
         sx={{
-          width: drawerWidth,
+          width: SideBarWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: drawerWidth,
+            width: SideBarWidth,
             boxSizing: "border-box",
           },
         }}
@@ -94,7 +57,7 @@ const Sidebar = () => {
         </Box>
         <Divider />
         <List sx={{ paddingX: "20px" }}>
-          {options.map((option, index) => (
+          {SideBarOptions.map((option, index) => (
             <>
               <ListItem
                 key={index}

@@ -1,3 +1,19 @@
+import {
+  DashboardOutlined,
+  LocalHospitalOutlined,
+  ContentCopyOutlined,
+  VpnKeyOutlined,
+  DnsOutlined,
+  AttachMoneyOutlined,
+  WifiOutlined,
+  DescriptionOutlined,
+  HeadphonesOutlined,
+  HelpOutlineOutlined,
+  LooksOneOutlined,
+  LooksTwoOutlined,
+  Looks3Outlined,
+} from "@mui/icons-material";
+
 export const BASE_API_ROUTE = 'https://assignment.abrnoc.com';
 export const SideBarWidth = "260px";
 export const SideBarOptions = [

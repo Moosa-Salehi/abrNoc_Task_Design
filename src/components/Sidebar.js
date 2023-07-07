@@ -10,8 +10,8 @@ import {
   ListItemText,
 } from "@mui/material";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
-import cloudzypic from "../assets/images/Cloudzy.webp";
 import { SideBarOptions, SideBarWidth } from "../Config";
+import CloudzyPicture from "./SidebarComponents/CloudzyPicture";
 
 const Sidebar = () => {
   const [activeOption, setActiveOption] = useState("Instances");
@@ -40,21 +40,7 @@ const Sidebar = () => {
         variant="permanent"
         anchor="left"
       >
-        <Box
-          sx={{
-            my: "10px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <img
-            src={cloudzypic}
-            alt="cloudzypic"
-            width={"150px"}
-            height={"40px"}
-          />
-        </Box>
+        <CloudzyPicture />
         <Divider />
         <List sx={{ paddingX: "20px" }}>
           {SideBarOptions.map((option, index) => (

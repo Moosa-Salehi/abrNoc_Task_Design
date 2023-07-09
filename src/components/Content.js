@@ -1,4 +1,5 @@
 import React from "react";
+import { Grid } from "@mui/material";
 import Region from "./ContentComponents/Region";
 import Plan from "./ContentComponents/Plan";
 import OperatingSystem from "./ContentComponents/OperatingSystem";
@@ -8,15 +9,15 @@ import InstanceDeploy from "./ContentComponents/InstanceDeploy";
 
 const Content = () => {
   return (
-    <>
-      <Region/>
-      <Plan/>
-      <OperatingSystem/>
-      <SSHkey/>
-      <HostName/>
-      <InstanceDeploy/>
-    </>
+    <Grid display={"flex"}>
+      <Region />
+      <Plan />
+      <OperatingSystem />
+      <SSHkey />
+      <HostName />
+      <InstanceDeploy />
+    </Grid>
   );
-}
+};
 
 export default Content;

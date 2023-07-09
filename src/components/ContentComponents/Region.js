@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { BASE_API_ROUTE } from "../../Config";
 import { Box, Grid, Typography } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
 
 const Region = () => {
-  const [regions, setRegions] = useState([]);
-  const [selectedRegion, setSelectedRegion] = useState(0);
+  const regions = useSelector((state) => state.regions);
+  const selectedRegion = useSelector((state) => state.selectedRegion);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getRegions = async () => {
@@ -16,21 +19,20 @@ const Region = () => {
           "https://flagcdn.com/en/codes.json"
         );
         // console.log("response in getting regions : ", response);
+        const newRegions = [];
         response.data.forEach((region) => {
           const regionName =
             region.name === "US" ? "United States" : region.name;
           for (const key in countryCodes.data) {
             if (regionName === countryCodes.data[key]) {
-              setRegions((prevRegions) => [
-                ...prevRegions,
-                {
-                  ...region,
-                  flag: `https://flagcdn.com/w2560/${key}.png`,
-                },
-              ]);
+              newRegions.push({
+                ...region,
+                flag: `https://flagcdn.com/w2560/${key}.png`,
+              });
             }
           }
         });
+        dispatch({ type: "SET_REGIONS", payload: newRegions });
       } catch (error) {
         console.log("error in getting regions : ", error);
       }
@@ -66,7 +68,7 @@ const Region = () => {
         {regions.map((region, index) => (
           <Grid
             key={index}
-            onClick={() => setSelectedRegion(index)}
+            onClick={() => dispatch({ type: "SELECT_REGION", payload: index })}
             display={"flex"}
             justifyContent={"flex-start"}
             alignItems={"center"}

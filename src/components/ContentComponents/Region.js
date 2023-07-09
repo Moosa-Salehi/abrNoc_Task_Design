@@ -42,9 +42,10 @@ const Region = () => {
       display={"flex"}
       flexDirection={"column"}
       justifyContent={"flex-start"}
+      width={"100%"}
     >
       <Typography>Region</Typography>
-      <Grid display={"flex"} flexDirection={"row"}>
+      <Grid display={"flex"} flexDirection={"row"} width={"100%"} wrap="wrap">
         {regions.map((region, index) => (
           <Grid
             key={index}

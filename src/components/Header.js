@@ -8,7 +8,6 @@ import {
   Grid,
 } from "@mui/material";
 import { NotificationsNoneOutlined, AddOutlined } from "@mui/icons-material";
-import { SideBarWidth } from "../Config";
 
 const balance = 125.5;
 
@@ -20,8 +19,9 @@ const Header = () => {
       justifyContent={"space-between"}
       alignItems={"center"}
       height={"60px"}
-      width={`calc(100vw - ${SideBarWidth}px)`}
+      width={"100%"}
       paddingX={"30px"}
+      borderBottom={"1px solid lightgray"}
     >
       <Breadcrumbs aria-label="breadcrumb">
         <Typography color="inherit" fontSize={18}>

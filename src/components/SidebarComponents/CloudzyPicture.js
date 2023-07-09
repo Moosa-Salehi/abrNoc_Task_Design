@@ -6,10 +6,10 @@ const CloudzyPicture = () => {
   return (
     <Box
       sx={{
-        my: "10px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        height: "58.75px",
       }}
     >
       <img src={cloudzypic} alt="cloudzypic" width={"150px"} height={"40px"} />

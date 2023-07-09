@@ -29,7 +29,7 @@ const SideBarOption = (props) => {
           border: "1px solid lightgray",
           borderRadius: "5px",
         }),
-        ...(props.option.name == props.activeOption && {
+        ...(props.option.name === props.activeOption && {
           backgroundColor: "rgb(44,94,255)",
           borderRadius: "5px",
         }),
@@ -39,7 +39,7 @@ const SideBarOption = (props) => {
         <ListItemIcon sx={{ minWidth: "40px" }}>
           <props.option.icon
             sx={{
-              ...(props.option.name == props.activeOption
+              ...(props.option.name === props.activeOption
                 ? { color: "rgb(250,250,250)" }
                 : { color: "rgba(0,0,0,0.7)" }),
             }}
@@ -48,7 +48,7 @@ const SideBarOption = (props) => {
         <ListItemText
           primary={props.option.name}
           primaryTypographyProps={{
-            ...(props.option.name == props.activeOption
+            ...(props.option.name === props.activeOption
               ? { color: "rgb(250,250,250)" }
               : { color: "rgba(0,0,0,0.7)", fontWeight: "bold" }),
           }}

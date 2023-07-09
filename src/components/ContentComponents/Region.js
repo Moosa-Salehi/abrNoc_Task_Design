@@ -66,6 +66,7 @@ const Region = () => {
         {regions.map((region, index) => (
           <Grid
             key={index}
+            onClick={() => setSelectedRegion(index)}
             display={"flex"}
             justifyContent={"flex-start"}
             alignItems={"center"}
@@ -73,12 +74,13 @@ const Region = () => {
             width={"226px"}
             border={
               selectedRegion === index
-                ? "1px solid blue"
-                : "1px solid lightgrey"
+                ? "3px solid rgb(44,94,255)"
+                : "1.5px solid lightgrey"
             }
             borderRadius={"5px"}
             marginBottom={"16px"}
             marginRight={"16px"}
+            sx={{ cursor: "pointer" }}
           >
             <Box
               sx={{
@@ -89,9 +91,18 @@ const Region = () => {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 marginX: "5px",
+                ...(selectedRegion !== index && {
+                  filter: "grayscale(100%)",
+                  opacity: "0.5",
+                }),
               }}
             ></Box>
-            <Typography marginLeft={"10px"}>{region.name}</Typography>
+            <Typography
+              marginLeft={"10px"}
+              color={selectedRegion !== index && "grey"}
+            >
+              {region.name}
+            </Typography>
           </Grid>
         ))}
       </Grid>

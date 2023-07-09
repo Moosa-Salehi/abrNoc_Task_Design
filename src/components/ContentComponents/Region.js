@@ -81,6 +81,9 @@ const Region = () => {
             marginBottom={"16px"}
             marginRight={"16px"}
             sx={{ cursor: "pointer" }}
+            boxShadow={
+              selectedRegion === index && "0.5px 0.5px 2px 0px rgba(0,0,0,0.5)"
+            }
           >
             <Box
               sx={{

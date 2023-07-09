@@ -5,6 +5,7 @@ import { Box, Grid, Typography } from "@mui/material";
 
 const Region = () => {
   const [regions, setRegions] = useState([]);
+  const [selectedRegion, setSelectedRegion] = useState(0);
 
   useEffect(() => {
     const getRegions = async () => {
@@ -70,7 +71,11 @@ const Region = () => {
             alignItems={"center"}
             padding={"10px"}
             width={"226px"}
-            border={"1px solid blue"}
+            border={
+              selectedRegion === index
+                ? "1px solid blue"
+                : "1px solid lightgrey"
+            }
             borderRadius={"5px"}
             marginBottom={"16px"}
             marginRight={"16px"}

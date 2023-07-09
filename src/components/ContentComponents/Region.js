@@ -43,9 +43,25 @@ const Region = () => {
       flexDirection={"column"}
       justifyContent={"flex-start"}
       width={"100%"}
+      paddingLeft={"32px"}
+      paddingRight={"16px"}
+      paddingY={"32px"}
     >
-      <Typography>Region</Typography>
-      <Grid display={"flex"} flexDirection={"row"} width={"100%"} wrap="wrap">
+      <Typography
+        marginBottom={"20px"}
+        fontWeight={"bold"}
+        fontSize={"20px"}
+        color={"rgba(0,0,0,0.8)"}
+      >
+        Region
+      </Typography>
+      <Grid
+        container
+        direction={"row"}
+        display={"flex"}
+        width={"100%"}
+        wrap="wrap"
+      >
         {regions.map((region, index) => (
           <Grid
             key={index}
@@ -53,8 +69,11 @@ const Region = () => {
             justifyContent={"flex-start"}
             alignItems={"center"}
             padding={"10px"}
-            minWidth={"226px"}
+            width={"226px"}
             border={"1px solid blue"}
+            borderRadius={"5px"}
+            marginBottom={"16px"}
+            marginRight={"16px"}
           >
             <Box
               sx={{
@@ -64,9 +83,10 @@ const Region = () => {
                 backgroundImage: `url(${region.flag})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                marginX: "5px",
               }}
             ></Box>
-            <Typography>{region.name}</Typography>
+            <Typography marginLeft={"10px"}>{region.name}</Typography>
           </Grid>
         ))}
       </Grid>

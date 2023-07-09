@@ -24,7 +24,7 @@ const Header = () => {
       borderBottom={"1px solid lightgray"}
     >
       <Breadcrumbs aria-label="breadcrumb">
-        <Typography color="inherit" fontSize={18}>
+        <Typography sx={{ color: "grey" }} fontSize={18}>
           Instances
         </Typography>
         <Typography color="text.primary" fontSize={18}>

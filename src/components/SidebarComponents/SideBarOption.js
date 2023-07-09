@@ -26,7 +26,7 @@ const SideBarOption = (props) => {
           marginTop: "5vh",
         }),
         ...(props.option.hasOwnProperty("bordered") && {
-          border: "1px solid lightgray",
+          border: "1.5px solid lightgray",
           borderRadius: "5px",
         }),
         ...(props.option.name === props.activeOption && {

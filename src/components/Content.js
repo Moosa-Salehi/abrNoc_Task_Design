@@ -9,7 +9,7 @@ import InstanceDeploy from "./ContentComponents/InstanceDeploy";
 
 const Content = () => {
   return (
-    <Grid display={"flex"}>
+    <Grid display={"flex"} sx={{ backgroundColor: "rgb(241,249,254)" }}>
       <Region />
       <Plan />
       <OperatingSystem />

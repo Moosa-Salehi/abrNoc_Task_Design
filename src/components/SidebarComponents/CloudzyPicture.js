@@ -9,7 +9,7 @@ const CloudzyPicture = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "58.75px",
+        minHeight: "58.75px",
       }}
     >
       <img src={cloudzypic} alt="cloudzypic" width={"150px"} height={"40px"} />

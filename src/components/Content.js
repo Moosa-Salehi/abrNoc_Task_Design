@@ -15,6 +15,7 @@ const Content = () => {
       padding={"32px"}
       width={"100%"}
       sx={{ backgroundColor: "rgb(241,249,254)" }}
+      minHeight={"calc(100vh - 60px)"}
     >
       <Grid
         display={"flex"}

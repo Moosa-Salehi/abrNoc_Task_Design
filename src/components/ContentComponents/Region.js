@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_API_ROUTE } from "../../Config";
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 
 const Region = () => {
   const [regions, setRegions] = useState([]);
@@ -24,7 +24,7 @@ const Region = () => {
                 ...prevRegions,
                 {
                   ...region,
-                  flag: `https://flagcdn.com/w80/${key}.png`,
+                  flag: `https://flagcdn.com/w2560/${key}.png`,
                 },
               ]);
             }
@@ -56,7 +56,16 @@ const Region = () => {
             minWidth={"226px"}
             border={"1px solid blue"}
           >
-            <img src={region.flag} width="80" alt="country flag" />
+            <Box
+              sx={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "50%",
+                backgroundImage: `url(${region.flag})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            ></Box>
             <Typography>{region.name}</Typography>
           </Grid>
         ))}

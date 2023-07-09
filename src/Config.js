@@ -15,7 +15,7 @@ import {
 } from "@mui/icons-material";
 
 export const BASE_API_ROUTE = "https://assignment.abrnoc.com";
-export const SideBarWidth = 260;
+export const SideBarWidth = 220;
 export const SideBarOptions = [
   { name: "Dashboard", icon: DashboardOutlined, firstOption: true },
   { name: "Instances", icon: LocalHospitalOutlined },

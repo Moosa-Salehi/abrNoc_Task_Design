@@ -56,7 +56,7 @@ const Header = () => {
           sx={{
             border: "1px solid rgb(189,189,189)",
             borderRadius: "5px",
-            minWidth: "150px",
+            minWidth: "133px",
             py: "5px",
           }}
         >

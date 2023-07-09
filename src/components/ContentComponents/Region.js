@@ -38,14 +38,28 @@ const Region = () => {
   }, []);
 
   return (
-    <Grid>
+    <Grid
+      display={"flex"}
+      flexDirection={"column"}
+      justifyContent={"flex-start"}
+    >
       <Typography>Region</Typography>
-      {regions.map((region, index) => (
-        <Grid key={index}>
-          <img src={region.flag} width="80" alt="country flag" />
-          <Typography>{region.name}</Typography>
-        </Grid>
-      ))}
+      <Grid display={"flex"} flexDirection={"row"}>
+        {regions.map((region, index) => (
+          <Grid
+            key={index}
+            display={"flex"}
+            justifyContent={"flex-start"}
+            alignItems={"center"}
+            padding={"10px"}
+            minWidth={"226px"}
+            border={"1px solid blue"}
+          >
+            <img src={region.flag} width="80" alt="country flag" />
+            <Typography>{region.name}</Typography>
+          </Grid>
+        ))}
+      </Grid>
     </Grid>
   );
 };

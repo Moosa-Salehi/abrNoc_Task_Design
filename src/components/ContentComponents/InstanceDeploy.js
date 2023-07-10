@@ -11,6 +11,9 @@ const InstanceDeploy = () => {
   const selectedOperatingSystem = useSelector(
     (state) => state.selectedOperatingSystem
   );
+  const selectedOperatingSystemVersion = useSelector(
+    (state) => state.selectedOperatingSystemVersion
+  );
 
   const handleDeploy = () => {
     console.log(
@@ -23,7 +26,7 @@ const InstanceDeploy = () => {
       "operating system : ",
       operatingSystems[selectedOperatingSystem].family,
       " version : ",
-      operatingSystems[selectedOperatingSystem].version
+      selectedOperatingSystemVersion
     );
   };
 

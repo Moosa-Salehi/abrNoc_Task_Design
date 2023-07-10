@@ -13,6 +13,7 @@ const operatingSystemsLogos = [
   "https://seeklogo.com/images/R/rocky-linux-logo-88E2F3FB8C-seeklogo.com.png",
   "https://seeklogo.com/images/R/rocky-linux-logo-88E2F3FB8C-seeklogo.com.png",
   "https://seeklogo.com/images/C/centos-logo-494F57D973-seeklogo.com.png",
+  "https://seeklogo.com/images/C/centos-logo-494F57D973-seeklogo.com.png",
 ];
 
 const OperatingSystem = () => {

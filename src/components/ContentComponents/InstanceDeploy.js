@@ -7,9 +7,24 @@ const InstanceDeploy = () => {
   const selectedPlan = useSelector((state) => state.selectedPlan);
   const regions = useSelector((state) => state.regions);
   const selectedRegion = useSelector((state) => state.selectedRegion);
+  const operatingSystems = useSelector((state) => state.operatingSystems);
+  const selectedOperatingSystem = useSelector(
+    (state) => state.selectedOperatingSystem
+  );
 
   const handleDeploy = () => {
-    console.log(regions[selectedRegion].name, plans[selectedPlan].cpu_cores);
+    console.log(
+      "region : ",
+      regions[selectedRegion].name,
+      "\n",
+      "number of cpu : ",
+      plans[selectedPlan].cpu_cores,
+      "\n",
+      "operating system : ",
+      operatingSystems[selectedOperatingSystem].family,
+      " version : ",
+      operatingSystems[selectedOperatingSystem].version
+    );
   };
 
   return (

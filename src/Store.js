@@ -5,6 +5,8 @@ const initialState = {
   regions: [],
   selectedPlan: 0,
   plans: [],
+  selectedOperatingSystem: 0,
+  operatingSystems: [],
 };
 
 function reducer(state = initialState, action) {
@@ -28,6 +30,16 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         selectedPlan: action.payload,
+      };
+    case "SET_OPERATING_SYSTEMS":
+      return {
+        ...state,
+        operatingSystems: action.payload,
+      };
+    case "SELECT_OPERATING_SYSTEM":
+      return {
+        ...state,
+        selectedOperatingSystem: action.payload,
       };
     default:
       return state;

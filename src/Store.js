@@ -6,7 +6,7 @@ const initialState = {
   selectedPlan: 0,
   plans: [],
   selectedOperatingSystem: 0,
-  selectedOperatingSystemVersion: 0,
+  selectedOperatingSystemVersion: null,
   operatingSystems: [],
 };
 

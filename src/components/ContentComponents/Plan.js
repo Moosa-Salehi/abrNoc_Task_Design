@@ -8,9 +8,23 @@ import {
   RadioGroup,
   FormControlLabel,
   FormControl,
+  Box,
+  styled,
 } from "@mui/material";
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import { useSelector, useDispatch } from "react-redux";
+
+const StyledTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: "rgb(47,56,87)",
+    color: "white",
+    fontSize: "15px",
+    borderRadius: "5px",
+  },
+}));
 
 const Plan = () => {
   const [plans, setPlans] = useState([]);
@@ -44,12 +58,10 @@ const Plan = () => {
       flexDirection={"column"}
       justifyContent={"flex-start"}
       width={"100%"}
-      // paddingLeft={"32px"}
-      // paddingRight={"16px"}
-      // paddingY={"32px"}
     >
       <Typography
         marginBottom={"20px"}
+        marginLeft={"32px"}
         fontWeight={"bold"}
         fontSize={"20px"}
         color={"rgba(0,0,0,0.8)"}
@@ -70,9 +82,12 @@ const Plan = () => {
             htmlFor="PlansRadioGroup"
             display={"flex"}
             flexDirection={"row"}
-            justifyContent={"space-evenly"}
+            justifyContent={"flex-start"}
             alignItems={"center"}
             borderBottom={"1px solid lightgray"}
+            paddingLeft={"80px"}
+            paddingRight={"16px"}
+            height={"56px"}
           >
             {[
               "CPU",
@@ -84,8 +99,9 @@ const Plan = () => {
               <Typography
                 key={index}
                 fontWeight={"bold"}
-                fontSize={"13px"}
+                fontSize={"14px"}
                 color={"rgba(0,0,0,0.8)"}
+                width={"20%"}
               >
                 {header}
               </Typography>
@@ -97,72 +113,80 @@ const Plan = () => {
             defaultValue={0}
           >
             {plans.map((plan, index) => (
-              <>
-                <Grid
-                  key={index}
-                  id={`LabelPlan${index}`}
-                  role="label"
-                  htmlFor={`Plan${index}`}
-                  onClick={() => setSelectedPlan(index)}
-                  display={"flex"}
-                  justifyContent={"flex-start"}
-                  alignItems={"center"}
-                  // padding={"10px"}
-                  // width={"226px"}
-                  // border={
-                  //   selectedPlan === index
-                  //     ? "3px solid rgb(44,94,255)"
-                  //     : "1.5px solid lightgrey"
-                  // }
-                  // marginBottom={"16px"}
-                  // marginRight={"16px"}
-                  // sx={{ cursor: "pointer" }}
-                >
-                  <Typography
-                    marginLeft={"10px"}
-                    fontSize={"15px"}
-                    color={"rgba(0,0,0,0.8)"}
-                  >
-                    {plan.cpu_cores} CPU
-                  </Typography>
-                  <Typography
-                    marginLeft={"10px"}
-                    fontSize={"15px"}
-                    color={"rgba(0,0,0,0.8)"}
-                  >
-                    {plan.memory_size_in_GB} GB
-                  </Typography>
-                  <Typography
-                    marginLeft={"10px"}
-                    fontSize={"15px"}
-                    color={"rgba(0,0,0,0.8)"}
-                  >
-                    {plan.memory_size_in_GB * 15} GB
-                  </Typography>
-                  <Typography
-                    marginLeft={"10px"}
-                    fontSize={"15px"}
-                    color={"rgba(0,0,0,0.8)"}
-                  >
-                    Up to {plan.connection_up_bound_speed} Gbps
-                  </Typography>
-                  <Typography
-                    marginLeft={"10px"}
-                    fontSize={"15px"}
-                    color={"rgba(0,0,0,0.8)"}
-                  >
-                    $ {plan.monthly_price.toFixed(2)}
-                  </Typography>
-                  <ErrorOutlineIcon />
-                </Grid>
-
+              <Grid
+                display={"flex"}
+                flexDirection={"row"}
+                borderBottom={"1px solid lightgray"}
+                paddingLeft={"32px"}
+                paddingRight={"16px"}
+                height={"56px"}
+              >
                 <FormControlLabel
                   value={index}
                   control={<Radio />}
                   id={`Plan${index}`}
                   aria-labelledby={`LabelPlan${index}`}
                 />
-              </>
+                <Grid
+                  container
+                  direction={"row"}
+                  key={index}
+                  id={`LabelPlan${index}`}
+                  role="label"
+                  htmlFor={`Plan${index}`}
+                  display={"flex"}
+                  justifyContent={"flex-start"}
+                  alignItems={"center"}
+                >
+                  {[
+                    `${plan.cpu_cores} CPU`,
+                    `${plan.memory_size_in_GB} GB`,
+                    `${plan.memory_size_in_GB * 15} GB`,
+                    `Up to ${plan.connection_up_bound_speed} Gbps`,
+                    `$ ${plan.monthly_price.toFixed(2)}`,
+                  ].map((item, itemIindex) => (
+                    <>
+                      {itemIindex === 4 ? (
+                        <Box
+                          display={"flex"}
+                          flexDirection={"row"}
+                          width={"20%"}
+                        >
+                          <Typography
+                            key={itemIindex}
+                            fontSize={"15px"}
+                            color={"rgba(0,0,0,0.8)"}
+                            marginRight={"25%"}
+                          >
+                            {item}
+                          </Typography>
+                          <StyledTooltip
+                            title={
+                              <React.Fragment>
+                                {`${plan.hourly_price} /hour`}
+                              </React.Fragment>
+                            }
+                          >
+                            <ErrorOutlineIcon
+                              color="action"
+                              sx={{ "&:hover": { color: "black" } }}
+                            />
+                          </StyledTooltip>
+                        </Box>
+                      ) : (
+                        <Typography
+                          key={itemIindex}
+                          fontSize={"15px"}
+                          color={"rgba(0,0,0,0.8)"}
+                          width={"20%"}
+                        >
+                          {item}
+                        </Typography>
+                      )}
+                    </>
+                  ))}
+                </Grid>
+              </Grid>
             ))}
           </RadioGroup>
         </FormControl>

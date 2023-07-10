@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { BASE_API_ROUTE } from "../../Config";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography, Autocomplete, TextField } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 
 const operatingSystemsLogos = {
@@ -19,6 +19,9 @@ const OperatingSystem = () => {
   const operatingSystems = useSelector((state) => state.operatingSystems);
   const selectedOperatingSystem = useSelector(
     (state) => state.selectedOperatingSystem
+  );
+  const selectedOperatingSystemVersion = useSelector(
+    (state) => state.selectedOperatingSystemVersion
   );
 
   const dispatch = useDispatch();
@@ -61,6 +64,26 @@ const OperatingSystem = () => {
     getOperatingSystems();
   }, []);
 
+  const versionList = (versions) => {
+    return (
+      <Autocomplete
+        value={selectedOperatingSystemVersion}
+        onChange={(event, newValue) => {
+          dispatch({
+            type: "SELECT_OPERATING_SYSTEM_VERSION",
+            payload: newValue,
+          });
+        }}
+        id="controllable-states-demo"
+        options={versions}
+        renderOption={(props, option) => <li {...props}>{option}</li>}
+        renderInput={(params) => (
+          <TextField label="Select version" {...params} />
+        )}
+      />
+    );
+  };
+
   return (
     <Grid
       display={"flex"}
@@ -93,6 +116,7 @@ const OperatingSystem = () => {
               dispatch({ type: "SELECT_OPERATING_SYSTEM", payload: index })
             }
             display={"flex"}
+            flexDirection={"column"}
             justifyContent={"flex-start"}
             alignItems={"center"}
             padding={"10px"}
@@ -111,19 +135,22 @@ const OperatingSystem = () => {
               "0.5px 0.5px 2px 0px rgba(0,0,0,0.5)"
             }
           >
-            <Box
-              sx={{
-                width: "40px",
-                height: "40px",
-                backgroundImage: `url(${operatingSystem.logo})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                marginX: "5px",
-              }}
-            ></Box>
-            <Typography marginLeft={"10px"}>
-              {operatingSystem.family}
-            </Typography>
+            <Grid display={"flex"} flexDirection={"row"}>
+              <Box
+                sx={{
+                  width: "40px",
+                  height: "40px",
+                  backgroundImage: `url(${operatingSystem.logo})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  marginX: "5px",
+                }}
+              ></Box>
+              <Typography marginLeft={"10px"}>
+                {operatingSystem.family}
+              </Typography>
+            </Grid>
+            {versionList(operatingSystem.versions)}
           </Grid>
         ))}
       </Grid>

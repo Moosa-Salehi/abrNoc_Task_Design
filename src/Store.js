@@ -3,6 +3,8 @@ import { createStore } from "redux";
 const initialState = {
   selectedRegion: 0,
   regions: [],
+  selectedPlan: 0,
+  plans: [],
 };
 
 function reducer(state = initialState, action) {
@@ -16,6 +18,16 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         selectedRegion: action.payload,
+      };
+    case "SET_PLANS":
+      return {
+        ...state,
+        plans: action.payload,
+      };
+    case "SELECT_PLAN":
+      return {
+        ...state,
+        selectedPlan: action.payload,
       };
     default:
       return state;

@@ -75,6 +75,7 @@ const OperatingSystem = () => {
           });
         }}
         id="controllable-states-demo"
+        fullWidth
         options={versions}
         renderOption={(props, option) => <li {...props}>{option}</li>}
         renderInput={(params) => (
@@ -118,7 +119,7 @@ const OperatingSystem = () => {
             display={"flex"}
             flexDirection={"column"}
             justifyContent={"flex-start"}
-            alignItems={"center"}
+            alignItems={"flex-start"}
             padding={"10px"}
             width={"226px"}
             border={
@@ -135,7 +136,7 @@ const OperatingSystem = () => {
               "0.5px 0.5px 2px 0px rgba(0,0,0,0.5)"
             }
           >
-            <Grid display={"flex"} flexDirection={"row"}>
+            <Grid display={"flex"} flexDirection={"row"} marginBottom={"10px"}>
               <Box
                 sx={{
                   width: "40px",

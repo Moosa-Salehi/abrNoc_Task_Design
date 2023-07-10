@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { BASE_API_ROUTE } from "../../Config";
 import {
@@ -27,8 +27,8 @@ const StyledTooltip = styled(({ className, ...props }) => (
 }));
 
 const Plan = () => {
-  const [plans, setPlans] = useState([]);
-  const [selectedPlan, setSelectedPlan] = useState(0);
+  const plans = useSelector((state) => state.plans);
+  const selectedPlan = useSelector((state) => state.selectedPlan);
   const regions = useSelector((state) => state.regions);
   const selectedRegion = useSelector((state) => state.selectedRegion);
 
@@ -43,7 +43,7 @@ const Plan = () => {
               regions[selectedRegion] ? regions[selectedRegion].name : "US"
             }`
         );
-        setPlans(response.data);
+        dispatch({ type: "SET_PLANS", payload: response.data });
         // console.log("response in getting plans : ", response);
       } catch (error) {
         console.log("error in getting plans : ", error);
@@ -111,6 +111,10 @@ const Plan = () => {
             id="PlansRadioGroup"
             aria-labelledby="Headers"
             defaultValue={0}
+            value={selectedPlan}
+            onChange={(event) =>
+              dispatch({ type: "SELECT_PLAN", payload: event.target.value })
+            }
           >
             {plans.map((plan, index) => (
               <Grid

@@ -6,6 +6,7 @@ const initialState = {
   selectedPlan: 0,
   plans: [],
   selectedOperatingSystem: 0,
+  selectedOperatingSystemVersion: 0,
   operatingSystems: [],
 };
 
@@ -40,6 +41,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         selectedOperatingSystem: action.payload,
+      };
+    case "SELECT_OPERATING_SYSTEM_VERSION":
+      return {
+        ...state,
+        selectedOperatingSystemVersion: action.payload,
       };
     default:
       return state;

@@ -10,7 +10,7 @@ const initialState = {
   operatingSystems: [],
   selectedSSHkey: null,
   instanceQuantity: 1,
-  hostNames: [],
+  hostNames: ["name1"],
 };
 
 function reducer(state = initialState, action) {

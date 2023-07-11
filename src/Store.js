@@ -9,6 +9,8 @@ const initialState = {
   selectedOperatingSystemVersion: null,
   operatingSystems: [],
   selectedSSHkey: null,
+  instanceQuantity: 1,
+  hostNames: [],
 };
 
 function reducer(state = initialState, action) {

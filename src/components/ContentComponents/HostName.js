@@ -34,10 +34,13 @@ const HostName = () => {
         {hostNames.map((hostname, index) => (
           <TextField
             key={index}
-            // value={name}
-            // onChange={(event) => {
-            //   setName(event.target.value);
-            // }}
+            value={hostname}
+            onChange={(event) => {
+              dispatch({
+                type: "SET_HOSTNAME",
+                payload: { hostName: event.target.value, index: index },
+              });
+            }}
             variant="outlined"
             label={`Name ${index + 1}`}
             inputProps={{

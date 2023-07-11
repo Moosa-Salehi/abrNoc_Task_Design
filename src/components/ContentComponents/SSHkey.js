@@ -1,8 +1,9 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Checkbox } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import { StyledTooltip } from "../../Config";
 
 const SSHkey = () => {
   const selectedSSHkey = useSelector((state) => state.selectedSSHkey);
@@ -47,7 +48,7 @@ const SSHkey = () => {
           marginRight={"16px"}
           sx={{
             cursor: "pointer",
-            "&:hover": { boxShadow: "0.5px 0.5px 2px 0px rgba(0,0,0,0.5)" },
+            "&:hover": { boxShadow: "0.5px 0.5px 3px 0px rgba(0,0,0,0.5)" },
           }}
         >
           <AddCircleOutlineIcon
@@ -68,8 +69,7 @@ const SSHkey = () => {
             display={"flex"}
             justifyContent={"flex-start"}
             alignItems={"center"}
-            paddingX={"10px"}
-            paddingY={"15px"}
+            padding={"10px"}
             width={"226px"}
             border={
               selectedSSHkey === index
@@ -81,14 +81,16 @@ const SSHkey = () => {
             marginRight={"16px"}
             sx={{
               cursor: "pointer",
-              "&:hover": { boxShadow: "0.5px 0.5px 2px 0px rgba(0,0,0,0.5)" },
+              "&:hover": { boxShadow: "0.5px 0.5px 3px 0px rgba(0,0,0,0.5)" },
             }}
             boxShadow={
-              selectedSSHkey === index && "0.5px 0.5px 2px 0px rgba(0,0,0,0.5)"
+              selectedSSHkey === index && "0.5px 0.5px 3px 0px rgba(0,0,0,0.5)"
             }
           >
+            <Checkbox checked={selectedSSHkey === index} />
             <Typography
-              marginLeft={"10px"}
+              marginLeft={"5px"}
+              marginRight={"30px"}
               fontWeight={"bold"}
               color={"rgba(0,0,0,0.8)"}
             >

@@ -128,7 +128,10 @@ const OperatingSystem = () => {
             borderRadius={"5px"}
             marginBottom={"16px"}
             marginRight={"16px"}
-            sx={{ cursor: "pointer" }}
+            sx={{
+              cursor: "pointer",
+              "&:hover": { boxShadow: "0.5px 0.5px 2px 0px rgba(0,0,0,0.5)" },
+            }}
             boxShadow={
               selectedOperatingSystem === index &&
               "0.5px 0.5px 2px 0px rgba(0,0,0,0.5)"

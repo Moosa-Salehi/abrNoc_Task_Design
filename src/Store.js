@@ -11,6 +11,7 @@ const initialState = {
   selectedSSHkey: null,
   instanceQuantity: 1,
   hostNames: ["name1"],
+  ipv4Enabled: false,
 };
 
 function reducer(state = initialState, action) {
@@ -66,6 +67,20 @@ function reducer(state = initialState, action) {
         ...state,
         selectedSSHkey: action.payload,
       };
+    case "ADD_INSTANCE":
+      return {
+        ...state,
+        hostNames: [...state.hostNames, `name${state.instanceQuantity + 1}`],
+        instanceQuantity: state.instanceQuantity + 1,
+      };
+    case "DELETE_INSTANCE":
+      return state.instanceQuantity === 1
+        ? state
+        : {
+            ...state,
+            hostNames: state.hostNames.slice(0, -1),
+            instanceQuantity: state.instanceQuantity - 1,
+          };
     default:
       return state;
   }

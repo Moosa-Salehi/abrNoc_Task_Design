@@ -19,6 +19,7 @@ const InstanceDeploy = () => {
   const selectedOperatingSystem = useSelector(
     (state) => state.selectedOperatingSystem
   );
+  const SSHKeys = useSelector((state) => state.SSHKeys);
   const selectedSSHkey = useSelector((state) => state.selectedSSHkey);
   const instanceQuantity = useSelector((state) => state.instanceQuantity);
   const hostNames = useSelector((state) => state.hostNames);
@@ -31,7 +32,7 @@ const InstanceDeploy = () => {
       region: regions[selectedRegion],
       plan: plans[selectedPlan],
       operatingSystem: operatingSystems[selectedOperatingSystem],
-      sshKey: selectedSSHkey,
+      sshKey: SSHKeys[selectedSSHkey],
       hostNames: hostNames,
       instanceQuantity: instanceQuantity,
       ipv4Enabled: ipv4Enabled,

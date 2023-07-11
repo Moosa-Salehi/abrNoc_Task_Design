@@ -9,22 +9,10 @@ import {
   FormControlLabel,
   FormControl,
   Box,
-  styled,
 } from "@mui/material";
-import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import { useSelector, useDispatch } from "react-redux";
-
-const StyledTooltip = styled(({ className, ...props }) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: "rgb(47,56,87)",
-    color: "white",
-    fontSize: "15px",
-    borderRadius: "5px",
-  },
-}));
+import { StyledTooltip } from "../../Config";
 
 const Plan = () => {
   const plans = useSelector((state) => state.plans);

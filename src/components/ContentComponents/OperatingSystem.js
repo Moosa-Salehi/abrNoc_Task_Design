@@ -89,9 +89,7 @@ const OperatingSystem = () => {
       flexDirection={"column"}
       justifyContent={"flex-start"}
       width={"100%"}
-      paddingLeft={"32px"}
-      paddingRight={"16px"}
-      paddingY={"32px"}
+      padding={"48px 16px 32px 32px"}
     >
       <Typography
         marginBottom={"20px"}

@@ -54,7 +54,7 @@ const SSHkey = () => {
           display={"flex"}
           justifyContent={"flex-start"}
           alignItems={"center"}
-          paddingX={"10px"}
+          paddingX={"5px"}
           paddingY={"15px"}
           width={"226px"}
           border={"1.5px solid lightgrey"}
@@ -84,7 +84,7 @@ const SSHkey = () => {
             display={"flex"}
             justifyContent={"flex-start"}
             alignItems={"center"}
-            padding={"10px"}
+            padding={"5px"}
             width={"226px"}
             border={
               selectedSSHkey === index
@@ -105,7 +105,7 @@ const SSHkey = () => {
             <Checkbox checked={selectedSSHkey === index} />
             <Typography
               marginLeft={"5px"}
-              marginRight={"40px"}
+              marginRight={"45px"}
               fontWeight={"bold"}
               color={"rgba(0,0,0,0.8)"}
             >

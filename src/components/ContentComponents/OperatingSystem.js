@@ -20,9 +20,6 @@ const OperatingSystem = () => {
   const selectedOperatingSystem = useSelector(
     (state) => state.selectedOperatingSystem
   );
-  const selectedOperatingSystemVersion = useSelector(
-    (state) => state.selectedOperatingSystemVersion
-  );
 
   const dispatch = useDispatch();
 

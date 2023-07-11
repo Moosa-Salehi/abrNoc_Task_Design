@@ -41,6 +41,13 @@ const InstanceDeploy = () => {
     console.log("User Selected Data: ", userSelectedData);
   };
 
+  const isDeployDisabled = () => {
+    let allHostNamesFilled = hostNames.find(
+      (hostName, index) => hostName === `Name ${index + 1}`
+    );
+    return selectedSSHkey === null || allHostNamesFilled !== undefined;
+  };
+
   return (
     <Grid
       display={"flex"}
@@ -140,6 +147,7 @@ const InstanceDeploy = () => {
       </Box>
       <Button
         variant="contained"
+        disabled={isDeployDisabled()}
         sx={{ backgroundColor: "rgb(0,205,130)", height: "40px" }}
         onClick={handleDeploy}
       >

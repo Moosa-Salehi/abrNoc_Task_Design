@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { AddOutlined, Remove } from "@mui/icons-material";
+import { AddOutlined, Remove, Cancel } from "@mui/icons-material";
 import {
   Button,
   Grid,
@@ -9,9 +9,13 @@ import {
   IconButton,
   Box,
   Checkbox,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 
 const InstanceDeploy = () => {
+  const [toastOpen, setToastOpen] = useState(false);
+
   const plans = useSelector((state) => state.plans);
   const selectedPlan = useSelector((state) => state.selectedPlan);
   const regions = useSelector((state) => state.regions);
@@ -29,6 +33,11 @@ const InstanceDeploy = () => {
   const dispatch = useDispatch();
 
   const handleDeploy = () => {
+    const allHostNamesFilled = hostNames.find((hostName) => hostName === "");
+    if (allHostNamesFilled !== undefined) {
+      setToastOpen(true);
+      return;
+    }
     const userSelectedData = {
       region: regions[selectedRegion],
       plan: plans[selectedPlan],
@@ -39,11 +48,6 @@ const InstanceDeploy = () => {
       ipv4Enabled: ipv4Enabled,
     };
     console.log("User Selected Data: ", userSelectedData);
-  };
-
-  const isDeployDisabled = () => {
-    let allHostNamesFilled = hostNames.find((hostName) => hostName === "");
-    return selectedSSHkey === null || allHostNamesFilled !== undefined;
   };
 
   return (
@@ -147,12 +151,30 @@ const InstanceDeploy = () => {
       </Box>
       <Button
         variant="contained"
-        disabled={isDeployDisabled()}
+        disabled={selectedSSHkey === null}
         sx={{ backgroundColor: "rgb(0,205,130)", height: "40px" }}
         onClick={handleDeploy}
       >
         DEPLOY NOW
       </Button>
+      <Snackbar
+        open={toastOpen}
+        autoHideDuration={6000}
+        onClose={() => setToastOpen(false)}
+      >
+        <Alert
+          variant="outlined"
+          severity="error"
+          icon={<Cancel fontSize="inherit" />}
+          sx={{
+            width: "260px",
+            color: "black",
+            backgroundColor: "rgb(252,242,250)",
+          }}
+        >
+          Please enter hostname.
+        </Alert>
+      </Snackbar>
     </Grid>
   );
 };

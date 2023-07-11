@@ -8,6 +8,7 @@ import {
   Typography,
   IconButton,
   Box,
+  Checkbox,
 } from "@mui/material";
 
 const InstanceDeploy = () => {
@@ -48,6 +49,13 @@ const InstanceDeploy = () => {
       paddingX={"16px"}
       paddingY={"32px"}
     >
+      <Typography
+        color={"rgba(0,0,0,0.8)"}
+        fontSize={"18px"}
+        marginBottom={"5px"}
+      >
+        Instance quantity:
+      </Typography>
       <Grid
         display={"flex"}
         justifyContent={"space-around"}
@@ -56,7 +64,7 @@ const InstanceDeploy = () => {
           border: "1px solid rgb(189,189,189)",
           borderRadius: "5px",
           width: "100%",
-          // py: "5px",
+          marginBottom: "20px",
         }}
       >
         <IconButton
@@ -83,8 +91,59 @@ const InstanceDeploy = () => {
           <AddOutlined color="action" sx={{ fontSize: 30 }} />
         </IconButton>
       </Grid>
-      <Button variant="contained" onClick={handleDeploy}>
-        Deploy
+      <Box
+        display={"flex"}
+        justifyContent={"flex-start"}
+        alignItems={"center"}
+        marginBottom={"20px"}
+      >
+        <Checkbox
+          checked={ipv4Enabled}
+          onChange={() =>
+            dispatch({ type: "TOGGLE_IPV4ENABLED", payload: null })
+          }
+        />
+        <Typography color={"rgba(0,0,0,0.8)"} fontSize={"20px"}>
+          Enable IPv4
+        </Typography>
+      </Box>
+      <Divider flexItem />
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        marginY={"20px"}
+      >
+        <Typography
+          color={"rgba(0,0,0,0.8)"}
+          fontSize={"23px"}
+          fontWeight={"bold"}
+        >
+          Total
+        </Typography>
+        <Box display={"flex"} alignItems={"end"}>
+          <Typography
+            color={"rgba(0,0,0,0.8)"}
+            fontSize={"23px"}
+            fontWeight={"bold"}
+          >
+            $ 57.95
+          </Typography>
+          <Typography
+            color={"rgba(0,0,0,0.5)"}
+            fontSize={"18px"}
+            marginLeft={"5px"}
+          >
+            /month
+          </Typography>
+        </Box>
+      </Box>
+      <Button
+        variant="contained"
+        sx={{ backgroundColor: "rgb(0,205,130)", height: "40px" }}
+        onClick={handleDeploy}
+      >
+        DEPLOY NOW
       </Button>
     </Grid>
   );

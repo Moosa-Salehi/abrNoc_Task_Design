@@ -105,7 +105,7 @@ const SSHkey = () => {
             <Checkbox checked={selectedSSHkey === index} />
             <Typography
               marginLeft={"5px"}
-              marginRight={"30px"}
+              marginRight={"40px"}
               fontWeight={"bold"}
               color={"rgba(0,0,0,0.8)"}
             >

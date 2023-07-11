@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, TextField } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 
 const HostName = () => {
@@ -16,7 +16,7 @@ const HostName = () => {
       width={"100%"}
       paddingLeft={"32px"}
       paddingRight={"16px"}
-      paddingY={"32px"}
+      paddingBottom={"32px"}
     >
       <Typography
         marginBottom={"20px"}
@@ -34,32 +34,26 @@ const HostName = () => {
         wrap="wrap"
       >
         {hostNames.map((hostname, index) => (
-          <Grid
+          <TextField
             key={index}
-            // onClick={() => dispatch({ type: "SELECT_SSHKEY", payload: index })}
-            display={"flex"}
-            justifyContent={"flex-start"}
-            alignItems={"center"}
-            padding={"10px"}
-            width={"226px"}
-            border={"1.5px solid lightgrey"}
-            borderRadius={"5px"}
-            marginBottom={"16px"}
-            marginRight={"16px"}
-            sx={{
-              cursor: "pointer",
-              "&:hover": { boxShadow: "0.5px 0.5px 3px 0px rgba(0,0,0,0.5)" },
+            // value={name}
+            // onChange={(event) => {
+            //   setName(event.target.value);
+            // }}
+            variant="outlined"
+            label={`Name ${index + 1}`}
+            inputProps={{
+              style: { fontWeight: "bold", color: "rgba(0,0,0,0.8)" },
             }}
-          >
-            <Typography
-              marginLeft={"5px"}
-              fontWeight={"bold"}
-              color={"rgba(0,0,0,0.8)"}
-            >
-              {"name"}
-              {index}
-            </Typography>
-          </Grid>
+            InputLabelProps={{ style: { color: "rgba(0,0,0,0.5)" } }}
+            sx={{
+              width: "349px",
+              // height: "40px",
+              borderRadius: "5px",
+              marginBottom: "16px",
+              marginRight: "16px",
+            }}
+          />
         ))}
       </Grid>
     </Grid>

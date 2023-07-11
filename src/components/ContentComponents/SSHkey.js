@@ -20,14 +20,25 @@ const SSHkey = () => {
       paddingRight={"16px"}
       paddingY={"32px"}
     >
-      <Typography
-        marginBottom={"20px"}
-        fontWeight={"bold"}
-        fontSize={"20px"}
-        color={"rgba(0,0,0,0.8)"}
-      >
-        SSH Key (optional)
-      </Typography>
+      <Grid display={"flex"} flexDirection={"row"} marginBottom={"20px"}>
+        <Typography
+          fontWeight={"bold"}
+          fontSize={"20px"}
+          color={"rgba(0,0,0,0.8)"}
+        >
+          SSH Key
+        </Typography>
+        <Typography
+          fontWeight={"bold"}
+          fontSize={"15px"}
+          marginLeft={"5px"}
+          position={"relative"}
+          top={"3px"}
+          color={"rgba(0,0,0,0.5)"}
+        >
+          (optional)
+        </Typography>
+      </Grid>
       <Grid
         container
         direction={"row"}

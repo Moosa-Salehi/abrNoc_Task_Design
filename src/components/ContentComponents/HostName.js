@@ -3,7 +3,7 @@ import { Grid, Typography, TextField } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 
 const HostName = () => {
-  const instanceQuantity = useSelector((state) => state.instanceQuantity);
+  const selectedSSHkey = useSelector((state) => state.selectedSSHkey);
   const hostNames = useSelector((state) => state.hostNames);
 
   const dispatch = useDispatch();
@@ -41,12 +41,23 @@ const HostName = () => {
             variant="outlined"
             label={`Name ${index + 1}`}
             inputProps={{
-              style: { fontWeight: "bold", color: "rgba(0,0,0,0.8)" },
+              style: {
+                fontWeight: "bold",
+                color: "rgba(0,0,0,0.8)",
+                padding: "8.5px 14px",
+              },
             }}
-            InputLabelProps={{ style: { color: "rgba(0,0,0,0.5)" } }}
+            InputLabelProps={{
+              style: {
+                ...(selectedSSHkey
+                  ? { color: "rgba(0,0,0,0.8)" }
+                  : { color: "rgba(0,0,0,0.5)" }),
+                position: "absolute",
+                top: "-6px",
+              },
+            }}
             sx={{
               width: "349px",
-              // height: "40px",
               borderRadius: "5px",
               marginBottom: "16px",
               marginRight: "16px",

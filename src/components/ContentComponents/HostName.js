@@ -34,6 +34,7 @@ const HostName = () => {
         {hostNames.map((hostname, index) => (
           <TextField
             key={index}
+            disabled={!selectedSSHkey}
             value={hostname}
             onChange={(event) => {
               dispatch({

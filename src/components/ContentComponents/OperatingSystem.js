@@ -3,6 +3,7 @@ import axios from "axios";
 import { BASE_API_ROUTE } from "../../Config";
 import { Box, Grid, Typography, Autocomplete, TextField } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
+import "../../index.css";
 
 const operatingSystemsLogos = {
   debian:
@@ -64,7 +65,7 @@ const OperatingSystem = () => {
   const versionList = (versions, selectedVersion, index) => {
     return (
       <Autocomplete
-        value={selectedVersion}
+        value={selectedOperatingSystem === index ? selectedVersion : null}
         onChange={(event, newValue) => {
           dispatch({
             type: "SELECT_OPERATING_SYSTEM_VERSION",
@@ -72,9 +73,10 @@ const OperatingSystem = () => {
           });
         }}
         fullWidth
+        disableClearable
         options={versions}
         renderInput={(params) => (
-          <TextField label="Select version" {...params} />
+          <TextField placeholder="Select version" {...params} />
         )}
       />
     );

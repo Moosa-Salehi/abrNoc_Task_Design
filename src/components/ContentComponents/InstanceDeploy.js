@@ -1,6 +1,14 @@
-import { Button, Grid } from "@mui/material";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { AddOutlined, Remove } from "@mui/icons-material";
+import {
+  Button,
+  Grid,
+  Divider,
+  Typography,
+  IconButton,
+  Box,
+} from "@mui/material";
 
 const InstanceDeploy = () => {
   const plans = useSelector((state) => state.plans);
@@ -11,27 +19,69 @@ const InstanceDeploy = () => {
   const selectedOperatingSystem = useSelector(
     (state) => state.selectedOperatingSystem
   );
-  const selectedOperatingSystemVersion = useSelector(
-    (state) => state.selectedOperatingSystemVersion
-  );
+  const selectedSSHkey = useSelector((state) => state.selectedSSHkey);
+  const instanceQuantity = useSelector((state) => state.instanceQuantity);
+  const hostNames = useSelector((state) => state.hostNames);
+  const ipv4Enabled = useSelector((state) => state.ipv4Enabled);
+
+  const dispatch = useDispatch();
 
   const handleDeploy = () => {
-    console.log(
-      "region : ",
-      regions[selectedRegion].name,
-      "\n",
-      "number of cpu : ",
-      plans[selectedPlan].cpu_cores,
-      "\n",
-      "operating system : ",
-      operatingSystems[selectedOperatingSystem].family,
-      " version : ",
-      selectedOperatingSystemVersion
-    );
+    const userSelectedData = {
+      region: regions[selectedRegion],
+      plan: plans[selectedPlan],
+      operatingSystem: operatingSystems[selectedOperatingSystem],
+      sshKey: selectedSSHkey,
+      hostNames: hostNames,
+      instanceQuantity: instanceQuantity,
+      ipv4Enabled: ipv4Enabled,
+    };
+    console.log("User Selected Data: ", userSelectedData);
   };
 
   return (
-    <Grid>
+    <Grid
+      display={"flex"}
+      flexDirection={"column"}
+      width={"100%"}
+      paddingX={"16px"}
+      paddingY={"32px"}
+    >
+      <Grid
+        display={"flex"}
+        justifyContent={"space-around"}
+        alignItems={"center"}
+        sx={{
+          border: "1px solid rgb(189,189,189)",
+          borderRadius: "5px",
+          width: "100%",
+          // py: "5px",
+        }}
+      >
+        <IconButton
+          sx={{ width: "20%" }}
+          onClick={() => dispatch({ type: "DELETE_INSTANCE", payload: null })}
+        >
+          <Remove color="action" sx={{ fontSize: 30 }} />
+        </IconButton>
+        <Divider orientation="vertical" flexItem />
+        <Box
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          width={"60%"}
+          marginY={"8px"}
+        >
+          <Typography color={"rgba(0,0,0,0.8)"}>{instanceQuantity}</Typography>
+        </Box>
+        <Divider orientation="vertical" flexItem />
+        <IconButton
+          sx={{ width: "20%" }}
+          onClick={() => dispatch({ type: "ADD_INSTANCE", payload: null })}
+        >
+          <AddOutlined color="action" sx={{ fontSize: 30 }} />
+        </IconButton>
+      </Grid>
       <Button variant="contained" onClick={handleDeploy}>
         Deploy
       </Button>

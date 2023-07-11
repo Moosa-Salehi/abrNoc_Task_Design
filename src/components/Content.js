@@ -34,12 +34,7 @@ const Content = () => {
         <SSHkey />
         <HostName />
       </Grid>
-      <Grid
-        display={"flex"}
-        width={"28%"}
-        wrap="wrap"
-        sx={{ backgroundColor: "white", borderRadius: "5px" }}
-      >
+      <Grid display={"flex"} width={"28%"} wrap="wrap">
         <InstanceDeploy />
       </Grid>
     </Grid>

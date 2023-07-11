@@ -55,6 +55,8 @@ const InstanceDeploy = () => {
       width={"100%"}
       paddingX={"16px"}
       paddingY={"32px"}
+      sx={{ backgroundColor: "white", borderRadius: "5px" }}
+      height={"340px"}
     >
       <Typography
         color={"rgba(0,0,0,0.8)"}

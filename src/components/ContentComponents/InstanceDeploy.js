@@ -42,9 +42,7 @@ const InstanceDeploy = () => {
   };
 
   const isDeployDisabled = () => {
-    let allHostNamesFilled = hostNames.find(
-      (hostName, index) => hostName === `Name ${index + 1}`
-    );
+    let allHostNamesFilled = hostNames.find((hostName) => hostName === "");
     return selectedSSHkey === null || allHostNamesFilled !== undefined;
   };
 

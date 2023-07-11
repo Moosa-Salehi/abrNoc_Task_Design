@@ -24,7 +24,13 @@ const SSHkey = () => {
       width={"100%"}
       padding={"0px 16px 32px 32px"}
     >
-      <Grid display={"flex"} flexDirection={"row"} marginBottom={"20px"}>
+      <Grid
+        display={"flex"}
+        flexDirection={"row"}
+        marginBottom={"20px"}
+        justifyContent={"flex-start"}
+        alignItems={"center"}
+      >
         <Typography
           fontWeight={"bold"}
           fontSize={"20px"}
@@ -36,8 +42,6 @@ const SSHkey = () => {
           fontWeight={"bold"}
           fontSize={"15px"}
           marginLeft={"5px"}
-          position={"relative"}
-          top={"3px"}
           color={"rgba(0,0,0,0.5)"}
         >
           (optional)

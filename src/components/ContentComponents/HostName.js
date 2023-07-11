@@ -42,21 +42,13 @@ const HostName = () => {
               });
             }}
             variant="outlined"
-            label={`Name ${index + 1}`}
             inputProps={{
               style: {
                 fontWeight: "bold",
-                color: "rgba(0,0,0,0.8)",
-                padding: "8.5px 14px",
-              },
-            }}
-            InputLabelProps={{
-              style: {
                 ...(selectedSSHkey
                   ? { color: "rgba(0,0,0,0.8)" }
                   : { color: "rgba(0,0,0,0.5)" }),
-                position: "absolute",
-                top: "-6px",
+                padding: "8.5px 14px",
               },
             }}
             sx={{

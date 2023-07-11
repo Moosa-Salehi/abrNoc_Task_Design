@@ -11,6 +11,11 @@ const SSHkey = () => {
 
   const dispatch = useDispatch();
 
+  const handleSSHClick = (index) => {
+    const payload = selectedSSHkey === index ? null : index;
+    dispatch({ type: "SELECT_SSHKEY", payload: payload });
+  };
+
   return (
     <Grid
       display={"flex"}
@@ -75,7 +80,7 @@ const SSHkey = () => {
         {SSHKeys.map((sshkey, index) => (
           <Grid
             key={index}
-            onClick={() => dispatch({ type: "SELECT_SSHKEY", payload: index })}
+            onClick={() => handleSSHClick(index)}
             display={"flex"}
             justifyContent={"flex-start"}
             alignItems={"center"}

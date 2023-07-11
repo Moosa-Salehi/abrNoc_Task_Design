@@ -107,6 +107,7 @@ const Region = () => {
             ></Box>
             <Typography
               marginLeft={"10px"}
+              fontWeight={"bold"}
               color={selectedRegion !== index && "grey"}
             >
               {region.name}

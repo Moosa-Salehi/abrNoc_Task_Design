@@ -34,7 +34,7 @@ const HostName = () => {
         {hostNames.map((hostname, index) => (
           <TextField
             key={index}
-            disabled={!selectedSSHkey}
+            disabled={selectedSSHkey === null}
             value={hostname}
             onChange={(event) => {
               dispatch({
@@ -46,7 +46,7 @@ const HostName = () => {
             inputProps={{
               style: {
                 fontWeight: "bold",
-                ...(selectedSSHkey
+                ...(selectedSSHkey !== null
                   ? { color: "rgba(0,0,0,0.8)" }
                   : { color: "rgba(0,0,0,0.5)" }),
                 padding: "8.5px 14px",

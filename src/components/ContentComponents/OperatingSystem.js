@@ -1,20 +1,9 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { BASE_API_ROUTE } from "../../Config";
+import { BASE_API_ROUTE, operatingSystemsLogos } from "../../Config";
 import { Box, Grid, Typography, Autocomplete, TextField } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import "../../index.css";
-
-const operatingSystemsLogos = {
-  debian:
-    "https://w7.pngwing.com/pngs/668/952/png-transparent-debian-arch-linux-computer-icons-desktop-linux-spiral-logo-magenta-thumbnail.png",
-  Fedora:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Fedora_icon_%282021%29.svg/512px-Fedora_icon_%282021%29.svg.png?20220308003156",
-  Rocky:
-    "https://seeklogo.com/images/R/rocky-linux-logo-88E2F3FB8C-seeklogo.com.png",
-  CentOS:
-    "https://seeklogo.com/images/C/centos-logo-494F57D973-seeklogo.com.png",
-};
 
 const OperatingSystem = () => {
   const operatingSystems = useSelector((state) => state.operatingSystems);

@@ -17,9 +17,7 @@ const SSHkey = () => {
       flexDirection={"column"}
       justifyContent={"flex-start"}
       width={"100%"}
-      paddingLeft={"32px"}
-      paddingRight={"16px"}
-      paddingY={"32px"}
+      padding={"0px 16px 32px 32px"}
     >
       <Grid display={"flex"} flexDirection={"row"} marginBottom={"20px"}>
         <Typography

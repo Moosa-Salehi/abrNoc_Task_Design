@@ -90,10 +90,10 @@ function reducer(state = initialState, action) {
         ...state,
         hostNames: newHostNames,
       };
-    case "SET_IPV4ENABLED":
+    case "TOGGLE_IPV4ENABLED":
       return {
         ...state,
-        ipv4Enabled: action.payload,
+        ipv4Enabled: !state.ipv4Enabled,
       };
     default:
       return state;

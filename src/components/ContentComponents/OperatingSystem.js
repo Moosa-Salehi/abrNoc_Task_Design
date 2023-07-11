@@ -148,7 +148,7 @@ const OperatingSystem = () => {
                   marginX: "5px",
                 }}
               ></Box>
-              <Typography marginLeft={"10px"}>
+              <Typography marginLeft={"10px"} fontWeight={"bold"}>
                 {operatingSystem.family}
               </Typography>
             </Grid>

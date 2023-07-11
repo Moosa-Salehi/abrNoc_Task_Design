@@ -80,6 +80,21 @@ function reducer(state = initialState, action) {
             hostNames: state.hostNames.slice(0, -1),
             instanceQuantity: state.instanceQuantity - 1,
           };
+    case "SET_HOSTNAME":
+      const newHostNames = state.hostNames.map((hostName, index) => {
+        return index === action.payload.index
+          ? action.payload.hostName
+          : hostName;
+      });
+      return {
+        ...state,
+        hostNames: newHostNames,
+      };
+    case "SET_IPV4ENABLED":
+      return {
+        ...state,
+        ipv4Enabled: action.payload,
+      };
     default:
       return state;
   }

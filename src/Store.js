@@ -6,9 +6,9 @@ const initialState = {
   selectedPlan: 0,
   plans: [],
   selectedOperatingSystem: 0,
-  selectedOperatingSystemVersion: null,
   operatingSystems: [],
   selectedSSHkey: null,
+  SSHKeys: ["Key name 1", "Key name 2", "Key name 3"],
   instanceQuantity: 1,
   hostNames: ["name1"],
   ipv4Enabled: false,
@@ -59,7 +59,6 @@ function reducer(state = initialState, action) {
       );
       return {
         ...state,
-        selectedOperatingSystemVersion: action.payload.version,
         operatingSystems: newOperatingSystems,
       };
     case "SELECT_SSHKEY":

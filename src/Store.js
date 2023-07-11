@@ -8,6 +8,7 @@ const initialState = {
   selectedOperatingSystem: 0,
   selectedOperatingSystemVersion: null,
   operatingSystems: [],
+  selectedSSHkey: null,
 };
 
 function reducer(state = initialState, action) {
@@ -53,11 +54,15 @@ function reducer(state = initialState, action) {
             : operatingSystem;
         }
       );
-
       return {
         ...state,
         selectedOperatingSystemVersion: action.payload.version,
         operatingSystems: newOperatingSystems,
+      };
+    case "SELECT_SSHKEY":
+      return {
+        ...state,
+        selectedSSHkey: action.payload,
       };
     default:
       return state;

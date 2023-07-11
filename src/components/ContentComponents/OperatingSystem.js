@@ -56,7 +56,6 @@ const OperatingSystem = () => {
           type: "SET_OPERATING_SYSTEMS",
           payload: newOperatingSystems,
         });
-        console.log(newOperatingSystems);
       } catch (error) {
         console.log("error in getting operating systems : ", error);
       }
@@ -74,10 +73,8 @@ const OperatingSystem = () => {
             payload: newValue,
           });
         }}
-        id="controllable-states-demo"
         fullWidth
         options={versions}
-        renderOption={(props, option) => <li {...props}>{option}</li>}
         renderInput={(params) => (
           <TextField label="Select version" {...params} />
         )}

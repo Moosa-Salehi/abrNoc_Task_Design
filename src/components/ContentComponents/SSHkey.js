@@ -63,7 +63,9 @@ const SSHkey = () => {
                 "0.5px 0.5px 2px 0px rgba(0,0,0,0.5)"
               }
             >
-              <Typography marginLeft={"10px"}>{sshkey}</Typography>
+              <Typography marginLeft={"10px"} fontWeight={"bold"}>
+                {sshkey}
+              </Typography>
             </Grid>
           )
         )}

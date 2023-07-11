@@ -48,6 +48,7 @@ const OperatingSystem = () => {
             newOperatingSystems.push({
               family: operatingSystem.family,
               versions: [operatingSystem.version],
+              selectedVersion: null,
               logo: operatingSystemsLogos[operatingSystem.family],
             });
           }
@@ -63,14 +64,14 @@ const OperatingSystem = () => {
     getOperatingSystems();
   }, []);
 
-  const versionList = (versions) => {
+  const versionList = (versions, selectedVersion, index) => {
     return (
       <Autocomplete
-        value={selectedOperatingSystemVersion}
+        value={selectedVersion}
         onChange={(event, newValue) => {
           dispatch({
             type: "SELECT_OPERATING_SYSTEM_VERSION",
-            payload: newValue,
+            payload: { version: newValue, index: index },
           });
         }}
         fullWidth
@@ -148,7 +149,11 @@ const OperatingSystem = () => {
                 {operatingSystem.family}
               </Typography>
             </Grid>
-            {versionList(operatingSystem.versions)}
+            {versionList(
+              operatingSystem.versions,
+              operatingSystem.selectedVersion,
+              index
+            )}
           </Grid>
         ))}
       </Grid>

@@ -43,9 +43,21 @@ function reducer(state = initialState, action) {
         selectedOperatingSystem: action.payload,
       };
     case "SELECT_OPERATING_SYSTEM_VERSION":
+      const newOperatingSystems = state.operatingSystems.map(
+        (operatingSystem, index) => {
+          return index === action.payload.index
+            ? {
+                ...operatingSystem,
+                selectedVersion: action.payload.version,
+              }
+            : operatingSystem;
+        }
+      );
+
       return {
         ...state,
-        selectedOperatingSystemVersion: action.payload,
+        selectedOperatingSystemVersion: action.payload.version,
+        operatingSystems: newOperatingSystems,
       };
     default:
       return state;

@@ -135,7 +135,7 @@ const OperatingSystem = () => {
               "0.5px 0.5px 3px 0px rgba(0,0,0,0.5)"
             }
           >
-            <Grid display={"flex"} flexDirection={"row"} marginBottom={"10px"}>
+            <Grid display={"flex"} flexDirection={"row"} marginBottom={"20px"}>
               <Box
                 sx={{
                   width: "40px",

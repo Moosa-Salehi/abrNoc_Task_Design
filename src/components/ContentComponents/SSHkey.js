@@ -7,6 +7,7 @@ import { StyledTooltip } from "../../Config";
 
 const SSHkey = () => {
   const selectedSSHkey = useSelector((state) => state.selectedSSHkey);
+  const SSHKeys = useSelector((state) => state.SSHKeys);
 
   const dispatch = useDispatch();
 
@@ -73,7 +74,7 @@ const SSHkey = () => {
             Add New
           </Typography>
         </Grid>
-        {["Key name 1", "Key name 2", "Key name 3"].map((sshkey, index) => (
+        {SSHKeys.map((sshkey, index) => (
           <Grid
             key={index}
             onClick={() => dispatch({ type: "SELECT_SSHKEY", payload: index })}

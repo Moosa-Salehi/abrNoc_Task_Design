@@ -14,9 +14,7 @@ const HostName = () => {
       flexDirection={"column"}
       justifyContent={"flex-start"}
       width={"100%"}
-      paddingLeft={"32px"}
-      paddingRight={"16px"}
-      paddingBottom={"32px"}
+      padding={"0px 16px 32px 32px"}
     >
       <Typography
         marginBottom={"20px"}

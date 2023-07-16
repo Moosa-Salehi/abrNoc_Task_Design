@@ -29,6 +29,7 @@ const InstanceDeploy = () => {
   const instanceQuantity = useSelector((state) => state.instanceQuantity);
   const hostNames = useSelector((state) => state.hostNames);
   const ipv4Enabled = useSelector((state) => state.ipv4Enabled);
+  const price = useSelector((state) => state.price);
 
   const dispatch = useDispatch();
 
@@ -138,7 +139,8 @@ const InstanceDeploy = () => {
             fontSize={"23px"}
             fontWeight={"bold"}
           >
-            $ 57.95
+            {"$ "}
+            {price}
           </Typography>
           <Typography
             color={"rgba(0,0,0,0.5)"}

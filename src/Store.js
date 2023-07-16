@@ -12,6 +12,7 @@ const initialState = {
   instanceQuantity: 1,
   hostNames: ["Name 1"],
   ipv4Enabled: false,
+  price: 0,
 };
 
 function reducer(state = initialState, action) {
@@ -29,12 +30,14 @@ function reducer(state = initialState, action) {
     case "SET_PLANS":
       return {
         ...state,
-        plans: action.payload,
+        plans: action.payload.plans,
+        price: action.payload.firstPrice,
       };
     case "SELECT_PLAN":
       return {
         ...state,
-        selectedPlan: action.payload,
+        selectedPlan: action.payload.selectedPlan,
+        price: action.payload.price,
       };
     case "SET_OPERATING_SYSTEMS":
       return {
@@ -67,9 +70,12 @@ function reducer(state = initialState, action) {
         selectedSSHkey: action.payload,
       };
     case "ADD_INSTANCE":
+      // console.log(state.price);
       return {
         ...state,
         hostNames: [...state.hostNames, `Name ${state.instanceQuantity + 1}`],
+        price:
+          (state.price / state.instanceQuantity) * (state.instanceQuantity + 1),
         instanceQuantity: state.instanceQuantity + 1,
       };
     case "DELETE_INSTANCE":
@@ -78,6 +84,9 @@ function reducer(state = initialState, action) {
         : {
             ...state,
             hostNames: state.hostNames.slice(0, -1),
+            price:
+              (state.price / state.instanceQuantity) *
+              (state.instanceQuantity - 1),
             instanceQuantity: state.instanceQuantity - 1,
           };
     case "SET_HOSTNAME":

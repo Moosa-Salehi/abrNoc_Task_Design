@@ -31,7 +31,13 @@ const Plan = () => {
               regions[selectedRegion] ? regions[selectedRegion].name : "US"
             }`
         );
-        dispatch({ type: "SET_PLANS", payload: response.data });
+        dispatch({
+          type: "SET_PLANS",
+          payload: {
+            plans: response.data,
+            firstPrice: response.data[0].monthly_price,
+          },
+        });
         // console.log("response in getting plans : ", response);
       } catch (error) {
         console.log("error in getting plans : ", error);
@@ -101,7 +107,13 @@ const Plan = () => {
             defaultValue={0}
             value={selectedPlan}
             onChange={(event) =>
-              dispatch({ type: "SELECT_PLAN", payload: event.target.value })
+              dispatch({
+                type: "SELECT_PLAN",
+                payload: {
+                  price: plans[event.target.value].monthly_price,
+                  selectedPlan: event.target.value,
+                },
+              })
             }
           >
             {plans.map((plan, index) => (

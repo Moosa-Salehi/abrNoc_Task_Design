@@ -50,9 +50,12 @@ export const operatingSystemsLogos = {
     "https://seeklogo.com/images/C/centos-logo-494F57D973-seeklogo.com.png",
 };
 
-export const StyledTooltip = styled(({ className, ...props }) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(({ theme }) => ({
+export const StyledTooltip = styled(
+  // this will be used for all tooltips
+  ({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  )
+)(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: "rgb(47,56,87)",
     color: "white",
